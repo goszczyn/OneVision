@@ -1,0 +1,9 @@
+server:
+  port: 8080
+encrypt:
+  key: mysymetrickey
+#  keyStore:
+#    location: server.jks
+#    password: passwor123
+#    alias: cfgServerKey
+#    secret: 1qaz2wsx
