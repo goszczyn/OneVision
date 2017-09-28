@@ -1,21 +1,24 @@
-server: 
+server:
   port: 8888
 spring:
   cloud:
     config:
       server:
-        encrypt.enabled: false
+        encrypt:
+          enabled: false
         git:
           uri: https://github.com/goszczyn/ConfigRepo.git
           searchPaths: config/leadservice
-          #username: goszczyn
-          #password: 1qaz2wsx
-  zipkin: 
-    baseUrl: http://192.168.99.100:9411
-logging: 
- file: /work/logi/myapplication.log
- level: 
-  com.netflix: WARN
-  org.springframework.web: DEBUG
-  com.thoughtmechanix: DEBUG
+encrypt:
+#  key: IMSYMMETRIC
+  key-store:
+    location: classpath:/server.jks
+    password: passwor123
+    alias: cfgserverkey
+    secret: 1qaz2wsx
+logging:
+ file: /work/logs/config-server.log
+ level:
+  org.springframework.cloud.config: DEBUG
+  org.springframework.web: INFO
   pl.goszczyn: INFO
