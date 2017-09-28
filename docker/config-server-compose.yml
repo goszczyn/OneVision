@@ -1,0 +1,6 @@
+version: '2'
+services:
+  configserver:
+    image: goszczyn/config-server:v1
+    ports:
+       - "8888:8888"
