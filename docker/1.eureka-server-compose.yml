@@ -1,0 +1,6 @@
+version: '2'
+services:
+  eurekaserver:
+    image: goszczyn/eureka-server:v1
+    ports:
+       - "8761:8761"

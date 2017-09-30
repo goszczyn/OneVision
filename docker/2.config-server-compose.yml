@@ -1,0 +1,9 @@
+version: '2'
+services:
+  configserver:
+    image: goszczyn/config-server:v1
+    ports:
+       - "8888:8888"
+     environment:
+         EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
+         EUREKASERVER_PORT: "8761"
