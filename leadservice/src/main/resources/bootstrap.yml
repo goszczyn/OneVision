@@ -7,3 +7,9 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: passwor123
+    alias: cfgserverkey
+    secret: 1qaz2wsx

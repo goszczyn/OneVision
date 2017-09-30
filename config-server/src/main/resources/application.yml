@@ -10,7 +10,6 @@ spring:
           uri: https://github.com/goszczyn/ConfigRepo.git
           searchPaths: config/leadservice
 encrypt:
-#  key: IMSYMMETRIC
   key-store:
     location: classpath:/server.jks
     password: passwor123
