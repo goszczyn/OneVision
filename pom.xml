@@ -12,12 +12,15 @@
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>1.4.7.RELEASE</version>
   </parent>
+
   <modules>
 	<module>eureka-server</module>
     <module>config-server</module>
-    <module>leadservice</module>
-    
+    <module>zuul-server</module>
+    <module>lead-service</module>
+    <module>agent-service</module>
   </modules>
+
   <build>
     <plugins>
       <plugin>

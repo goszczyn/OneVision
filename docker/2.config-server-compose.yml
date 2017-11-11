@@ -4,6 +4,7 @@ services:
     image: goszczyn/config-server:v1
     ports:
        - "8888:8888"
-     environment:
-         EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
-         EUREKASERVER_PORT: "8761"
+    environment:
+       EUREKASERVER_URI: "http://192.168.99.102:8761/eureka/"
+       EUREKASERVER_PORT: "8761"
+       DOCKER_IP: "192.168.99.102"   

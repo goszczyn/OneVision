@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: leadservice
+  cloud:
+    config:
+      #uri: http://localhost:8888 #(direct url to config server)
+      enabled: true
+      discovery:
+         enabled: true
+         serviceId: configserver
+
+eureka:
+  instance:
+    preferIpAddress: true
+    ip-address: 192.168.99.100
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: passwor123
+    alias: cfgserverkey
+    secret: 1qaz2wsx
+
+logging:
+  file: /work/logs/lead-service.log
+  level:
+    org.springframework.cloud.config: DEBUG
+    org.springframework.web: INFO
+    pl.goszczyn: INFO

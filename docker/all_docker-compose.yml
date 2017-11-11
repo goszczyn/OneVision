@@ -4,6 +4,8 @@ services:
     image: goszczyn/eureka-server:v1
     ports:
        - "8761:8761"
+    environment:
+        EUREKASERVER_URI: "http://192.168.99.102:8761/eureka/"	   
   configserver:
     image: goszczyn/config-server:v1
     ports:
@@ -11,8 +13,19 @@ services:
     environment:
          EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
          EUREKASERVER_PORT: "8761"
+  zuulserver:
+    image: goszczyn/zuul-server:v1
+    ports:
+      - "5555:5555"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "5555"
+      CONFIGSERVER_URI: "http://192.168.99.100:8888"
+      EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
+      EUREKASERVER_PORT:        "8761"
+      CONFIGSERVER_PORT:        "8888"
   leadservice:
-    image: goszczyn/leadservice:v1
+    image: goszczyn/lead-service:v1
     ports:
       - "8080:8080"
     environment:
