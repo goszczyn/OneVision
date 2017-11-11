@@ -1,0 +1,14 @@
+version: '2'
+services:
+  zuulserver:
+    image: goszczyn/zuul-server:v1
+    ports:
+      - "5555:5555"
+    environment:
+      EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+      CONFIGSERVER_PORT: "8888"
+      DOCKER_IP: "${DOCKER_IP}"   
+      GRAYLOG_HOST: "${DOCKER_IP}"
+      GRAYLOG_PORT: "12201"
+      

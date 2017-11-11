@@ -1,29 +1,42 @@
 version: '2'
 services:
+  database:
+    image: postgres:9.5
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "1qaz2wsx"
+      POSTGRES_DB:       "microDB"
   eurekaserver:
     image: goszczyn/eureka-server:v1
     ports:
        - "8761:8761"
     environment:
-        EUREKASERVER_URI: "http://192.168.99.102:8761/eureka/"	   
+        EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"   
+        GRAYLOG_HOST: "${DOCKER_IP}"
+        GRAYLOG_PORT: "12201"
   configserver:
     image: goszczyn/config-server:v1
     ports:
        - "8888:8888"
     environment:
-         EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
-         EUREKASERVER_PORT: "8761"
+       EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"
+       EUREKASERVER_PORT: "8761"
+       DOCKER_IP: "${DOCKER_IP}"   
+       GRAYLOG_HOST: "${DOCKER_IP}"
+       GRAYLOG_PORT: "12201"
   zuulserver:
     image: goszczyn/zuul-server:v1
     ports:
       - "5555:5555"
     environment:
-      PROFILE: "default"
-      SERVER_PORT: "5555"
-      CONFIGSERVER_URI: "http://192.168.99.100:8888"
-      EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
-      EUREKASERVER_PORT:        "8761"
-      CONFIGSERVER_PORT:        "8888"
+      EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"
+      EUREKASERVER_PORT: "8761"
+      CONFIGSERVER_PORT: "8888"
+      DOCKER_IP: "${DOCKER_IP}"   
+      GRAYLOG_HOST: "${DOCKER_IP}"
+      GRAYLOG_PORT: "12201"
   leadservice:
     image: goszczyn/lead-service:v1
     ports:
@@ -33,4 +46,20 @@ services:
         SERVER_PORT: "8080"
         EUREKASERVER_PORT:   "8761"
         CONFIGSERVER_PORT:   "8888"
-        EUREKASERVER_URI: "http://192.168.99.100:8761/eureka/"
+        EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"
+        DOCKER_IP: "${DOCKER_IP}"   
+        GRAYLOG_HOST: "${DOCKER_IP}"
+        GRAYLOG_PORT: "12201"
+  agentservice:
+    image: goszczyn/agent-service:v1
+    ports:
+      - "8090:8090"
+    environment:
+        PROFILE: "dev"
+        SERVER_PORT: "8090"
+        EUREKASERVER_PORT:   "8761"
+        CONFIGSERVER_PORT:   "8888"
+        EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"
+        DOCKER_IP: "${DOCKER_IP}"   
+        GRAYLOG_HOST: "${DOCKER_IP}"
+        GRAYLOG_PORT: "12201"

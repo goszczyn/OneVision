@@ -1,0 +1,15 @@
+version: '2'
+services:
+  agentservice:
+    image: goszczyn/agent-service:v1
+    ports:
+      - "8090:8090"
+    environment:
+        PROFILE: "dev"
+        SERVER_PORT: "8090"
+        EUREKASERVER_PORT:   "8761"
+        CONFIGSERVER_PORT:   "8888"
+        EUREKASERVER_URI: "http://${DOCKER_IP}:8761/eureka/"
+        DOCKER_IP: "${DOCKER_IP}"   
+        GRAYLOG_HOST: "${DOCKER_IP}"
+        GRAYLOG_PORT: "12201"
