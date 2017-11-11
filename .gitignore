@@ -292,3 +292,17 @@ hs_err_pid*
 /config-server.iml
 /eureka-server.iml
 /leadservice.iml
+/eureka-server/.mvn/wrapper/maven-wrapper.jar
+/eureka-server/.mvn/wrapper/maven-wrapper.properties
+/eureka-server/mvnw
+/eureka-server/mvnw.cmd
+/eureka-server/.mvn/wrapper/maven-wrapper.jar
+/agent-service/.mvn/wrapper/maven-wrapper.jar
+/agent-service/.mvn/wrapper/maven-wrapper.properties
+/agent-service/mvnw
+/agent-service/mvnw.cmd
+/config-server/.mvn/wrapper/maven-wrapper.jar
+/lead-service/.mvn/wrapper/maven-wrapper.jar
+/lead-service/.mvn/wrapper/maven-wrapper.properties
+/lead-service/mvnw
+/lead-service/mvnw.cmd
