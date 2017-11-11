@@ -11,5 +11,7 @@ echo "Starting Configuration Service with Eureka Endpoint:  $EUREKASERVER_URI";
 echo "********************************************************"
 java -Djava.security.egd=file:/dev/./urandom                                    \
      -Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI                   \
-     -Deureka.instance.ip-address=$DOCKER_IP                                    \
+     -Deureka.instance.ip-address=$DOCKER_IP									\
+     -Dgraylog.host=$GRAYLOG_HOST                                         		\
+     -Dgraylog.port=$GRAYLOG_PORT                                         		\
      -jar /usr/local/config-server/@project.build.finalName@.jar
