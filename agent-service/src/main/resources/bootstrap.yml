@@ -1,0 +1,35 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: agentservice
+  cloud:
+    config:
+       enabled: true
+       discovery:
+         enabled: true
+         serviceId: configserver
+
+eureka:
+  instance:
+    preferIpAddress: true
+    ip-address: 192.168.99.100
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+encrypt:
+  key-store:
+    location: classpath:/server.jks
+    password: passwor123
+    alias: cfgserverkey
+    secret: 1qaz2wsx
+
+logging:
+ file: /work/logs/agent-service.log
+ level:
+  org.springframework.cloud.config: DEBUG
+  org.springframework.web: INFO
+  pl.goszczyn: INFO
