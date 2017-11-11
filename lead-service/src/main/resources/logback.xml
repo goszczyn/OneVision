@@ -3,8 +3,8 @@
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     
     <appender name="GELF" class="de.siegmar.logbackgelf.GelfUdpAppender">
-        <graylogHost>192.168.99.100</graylogHost>
-        <graylogPort>12201</graylogPort>
+        <graylogHost>${graylog.host}</graylogHost>
+        <graylogPort>${graylog.port}</graylogPort>
         <layout class="de.siegmar.logbackgelf.GelfLayout">
             <!--<originHost>localhost</originHost>-->
             <includeRawMessage>false</includeRawMessage>
